@@ -7,6 +7,7 @@ function App() {
     return (
         <Routes>
             <Route path={routes.homepage} element={<Homepage />} />
+            <Route path={`${routes.details}/:name`} element={<Homepage />} />
         </Routes>
     );
 }

@@ -2,13 +2,18 @@ import { useState } from "react";
 import TextInput from "../../components/text-input/TextInput";
 
 interface Props {
-    onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+    onSubmit: (pokemonName: string) => void;
 }
 export default function SearchForm({ onSubmit }: Props) {
     const [inputText, setInputText] = useState("");
 
     return (
-        <form onSubmit={onSubmit}>
+        <form
+            onSubmit={(e) => {
+                e.preventDefault();
+                onSubmit(inputText);
+            }}
+        >
             <h1>Pokedex</h1>
 
             <TextInput

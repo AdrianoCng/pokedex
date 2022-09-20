@@ -3,8 +3,8 @@ const pokemonKeysFactory = {
     all() {
         return [...this.baseKey, "List"];
     },
-    details(url: string) {
-        return [...this.baseKey, "Details", { url }];
+    details(name: string) {
+        return [...this.baseKey, "Details", name];
     },
 };
 

@@ -6,12 +6,10 @@ export interface PokemonsResponse {
     count: number;
     next: string | null;
     previous: string | null;
-    results: [
-        {
-            name: string;
-            url: string;
-        }
-    ];
+    results: {
+        name: string;
+        url: string;
+    }[];
 }
 
 type QueryOptions = Omit<UseQueryOptions<PokemonsResponse, AxiosError>, "queryKey" | "queryFn">;

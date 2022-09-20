@@ -3,9 +3,10 @@ import styles from "./Card.module.scss";
 
 interface Props {
     pokemon: PokemonsResponse["results"][0];
+    onClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
     img?: string;
 }
-export default function Card({ pokemon, img }: Props) {
+export default function Card({ pokemon, onClick, img }: Props) {
     const renderImage = () => {
         if (!img) return;
 
@@ -13,7 +14,7 @@ export default function Card({ pokemon, img }: Props) {
     };
 
     return (
-        <div className={styles.card}>
+        <div className={styles.card} onClick={onClick}>
             {renderImage()}
             {pokemon.name}
         </div>
