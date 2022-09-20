@@ -1,0 +1,36 @@
+@use "../../styles/mixins";
+
+.card {
+    border-radius: 20px;
+    background-color: #c2efea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 500;
+    height: 150px;
+    padding: 0 10px;
+    word-break: break-all;
+    width: calc(100% / 4 - 20px);
+    cursor: pointer;
+    box-shadow: 0 0 3px #b4e5e9;
+    border: none;
+    overflow: hidden;
+
+    &:hover {
+        // transform: scale(1.05);
+        border: 1px solid #a9becf;
+    }
+
+    @include mixins.media_screen_laptop {
+        width: calc(100% / 3 - 20px);
+    }
+
+    @include mixins.media_screen_tablet {
+        width: calc(50% - 20px);
+    }
+
+    @include mixins.media_screen_mobile {
+        width: calc(100% - 20px);
+    }
+}

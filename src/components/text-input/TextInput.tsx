@@ -8,10 +8,24 @@ interface Props {
     labelClassName?: string;
     placeholder?: string;
     label?: string;
+    fullWidth?: boolean;
 }
-export default function TextInput({ onChange, className, label, labelClassName, ...props }: Props) {
-    const classes = [styles.input, className && className].filter((cl) => !!cl).join(" ");
-    const labelClasses = [styles.label, labelClassName && labelClassName]
+export default function TextInput({
+    onChange,
+    className,
+    label,
+    labelClassName,
+    fullWidth = false,
+    ...props
+}: Props) {
+    const classes = [styles.input, className && className, fullWidth && styles.full_width]
+        .filter((cl) => !!cl)
+        .join(" ");
+    const labelClasses = [
+        styles.label,
+        labelClassName && labelClassName,
+        fullWidth && styles.full_width,
+    ]
         .filter((cl) => !!cl)
         .join(" ");
 

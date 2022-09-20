@@ -1,7 +1,0 @@
-@use "./styles/mixins";
-
-.container {
-    @include mixins.container;
-
-    margin-top: 50px;
-}

@@ -1,20 +1,22 @@
 import { useState } from "react";
 import TextInput from "../../components/text-input/TextInput";
-import styles from "./SearchForm.module.scss";
 
-export default function SearchForm() {
+interface Props {
+    onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+}
+export default function SearchForm({ onSubmit }: Props) {
     const [inputText, setInputText] = useState("");
 
     return (
-        <form>
+        <form onSubmit={onSubmit}>
             <h1>Pokedex</h1>
 
             <TextInput
                 value={inputText}
                 name="test"
                 onChange={(value) => setInputText(value)}
-                className={styles.input_search}
                 label="Search for a Pokemon"
+                fullWidth
             />
         </form>
     );
