@@ -16,6 +16,7 @@ export default function usePokemon({ name, ...queryOptions }: QueryOptions) {
         },
         {
             ...queryOptions,
+            enabled: !!name,
         }
     );
 
