@@ -1,7 +1,7 @@
 const pokemonKeysFactory = {
     baseKey: ["Pokemons"],
-    all() {
-        return [...this.baseKey, "List"];
+    all(url: string) {
+        return [...this.baseKey, "List", url];
     },
     details(name: string) {
         return [...this.baseKey, "Details", name];

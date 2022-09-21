@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import Card from "../../components/card/Card";
 import SearchForm from "../../containers/search-form/SearchForm";
@@ -8,7 +9,11 @@ import styles from "./Homepage.module.scss";
 
 export default function Homepage() {
     const navigate = useNavigate();
-    const [pokemonsList, pokemonsListQuery] = usePokemons();
+    const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon");
+
+    const [pokemonsList, pokemonsListQuery] = usePokemons({
+        url,
+    });
 
     const goToDetailsPage = (name: string) => {
         navigate(`${routes.details}/${name}`);
@@ -39,6 +44,22 @@ export default function Homepage() {
             <SearchForm onSubmit={goToDetailsPage} />
 
             <div className={styles.card_deck}>{renderDeck()}</div>
+
+            <div className={styles.btn_grp}>
+                {pokemonsList?.previous && (
+                    <button
+                        className={styles.btn}
+                        onClick={() => setUrl(pokemonsList?.previous || "")}
+                    >
+                        Previous
+                    </button>
+                )}
+                {pokemonsList?.next && (
+                    <button className={styles.btn} onClick={() => setUrl(pokemonsList?.next || "")}>
+                        Next
+                    </button>
+                )}
+            </div>
         </div>
     );
 }
