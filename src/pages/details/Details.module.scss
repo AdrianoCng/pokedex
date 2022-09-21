@@ -1,0 +1,79 @@
+@use "../../styles/mixins";
+
+.hero {
+    position: relative;
+    background-color: aqua;
+    left: 0;
+    right: 0;
+    top: 0;
+    min-height: 275px;
+    background: rgb(180, 229, 233);
+    background: radial-gradient(circle, rgba(180, 229, 233, 1) 0%, rgba(221, 251, 255, 1) 100%);
+
+    .img_container {
+        @include mixins.container;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: -30px;
+
+        img {
+            max-width: 200px;
+        }
+    }
+
+    .icon_back {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        cursor: pointer;
+    }
+}
+
+.body {
+    @include mixins.container;
+
+    margin-top: 50px;
+
+    .pokemon {
+        &_name {
+            text-transform: capitalize;
+        }
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 5px;
+        overflow: hidden;
+        margin-top: 75px;
+        height: 250px;
+
+        th,
+        tr,
+        td {
+            padding: 5px 15px;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+            font-size: 1.1rem;
+        }
+
+        th {
+            background-color: rgb(218 234 235);
+            text-align: left;
+            width: 160px;
+        }
+
+        td {
+            text-align: center;
+            background-color: #f0f6f7;
+        }
+
+        @include mixins.media_screen_tablet {
+            width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
